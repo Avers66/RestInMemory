@@ -26,7 +26,7 @@ public class OrderRepositoryInMemory implements OrderRepository {
 
     private final Map<Long, Order> repository = new HashMap<>();
 
-    private final AtomicLong currentId = new AtomicLong(1);
+    private final AtomicLong currentId = new AtomicLong(0);
 
     @Override
     public List<Order> findAll() {
@@ -71,6 +71,11 @@ public class OrderRepositoryInMemory implements OrderRepository {
     @Override
     public void deleteByIDS(List<Long> ids) {
         ids.forEach(repository::remove);
+    }
+
+    @Override
+    public void deleteAll() {
+        repository.clear();
     }
 
     @Autowired

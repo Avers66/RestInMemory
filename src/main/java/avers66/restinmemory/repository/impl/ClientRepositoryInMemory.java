@@ -29,7 +29,7 @@ public class ClientRepositoryInMemory implements ClientRepository {
 
     private final Map<Long, Client> repository = new HashMap<>();
 
-    private AtomicLong currentId = new AtomicLong(1);
+    private AtomicLong currentId = new AtomicLong(0);
 
     @Override
     public List<Client> findAll() {
@@ -73,6 +73,12 @@ public class ClientRepositoryInMemory implements ClientRepository {
         orderRepository.deleteByIDS(client.getOrderList().stream().map((c) -> c.getClientId()).collect(Collectors.toList()));
         repository.remove(id);
 
+    }
+
+    @Override
+    public void deleteAll() {
+        orderRepository.deleteAll();
+        repository.clear();
     }
 
     @Autowired

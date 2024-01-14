@@ -25,4 +25,6 @@ public interface OrderRepository {
     void deleteById(Long id);
 
     void deleteByIDS(List<Long> ids);
+
+    void deleteAll();
 }

@@ -27,6 +27,8 @@ public interface ClientRepository {
 
     void deleteById(Long id);
 
+    void deleteAll();
+
 
 
 }
