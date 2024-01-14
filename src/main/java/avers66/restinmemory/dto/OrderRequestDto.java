@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Data
 public class OrderRequestDto {
 
-    private Long id;
+    private Long clientId;
     private String product;
     private BigDecimal cost;
 }

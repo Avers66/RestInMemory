@@ -26,7 +26,7 @@ public class OrderMapper {
         Order order = new Order();
         order.setProduct(orderRequestDto.getProduct());
         order.setCost(orderRequestDto.getCost());
-        order.setClientId(orderRequestDto.getId());
+        order.setClientId(orderRequestDto.getClientId());
         return order;
     }
 
