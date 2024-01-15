@@ -1,4 +1,4 @@
-package avers66.restinmemory.web;
+package avers66.restinmemory.web.controller.v1;
 
 import avers66.restinmemory.AbstractTestController;
 import avers66.restinmemory.StringTestUtils;

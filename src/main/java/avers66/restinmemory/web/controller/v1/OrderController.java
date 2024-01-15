@@ -1,4 +1,4 @@
-package avers66.restinmemory.web.v1;
+package avers66.restinmemory.web.controller.v1;
 
 import avers66.restinmemory.dto.ListOrderResponseDto;
 import avers66.restinmemory.dto.OrderRequestDto;

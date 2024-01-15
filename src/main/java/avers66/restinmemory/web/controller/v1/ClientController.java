@@ -1,11 +1,13 @@
-package avers66.restinmemory.web.v1;
+package avers66.restinmemory.web.controller.v1;
 
 import avers66.restinmemory.dto.ClientRequestDto;
 import avers66.restinmemory.dto.ClientResponseDto;
 import avers66.restinmemory.dto.ListClientResponseDto;
+import avers66.restinmemory.exception.EntityNotFoundException;
 import avers66.restinmemory.mapper.v1.ClientMapper;
 import avers66.restinmemory.model.Client;
 import avers66.restinmemory.service.ClientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientResponseDto> save(@RequestBody ClientRequestDto requestDto) {
+    public ResponseEntity<ClientResponseDto> save(@RequestBody @Valid ClientRequestDto requestDto) {
         Client client = clientService.save(clientMapper.requestToClient(requestDto));
         ClientResponseDto clientResponseDto = clientMapper.clientToResponse(client);
         return ResponseEntity.status(HttpStatus.CREATED).body(clientResponseDto);
@@ -56,4 +58,12 @@ public class ClientController {
         clientService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+//    Работает только для одного контроллера. Чтобы обрабатывать ошибки централизовано во всех контроллерах,
+//    нужно использовать аннотацию @RestControllerAdvice
+
+//    @ExceptionHandler(EntityNotFoundException.class) //Вместо этого метода можно сделать аннотацию над классом EntityNotFoundException
+//    public ResponseEntity<Void> notFoundHandler(EntityNotFoundException ex) {
+//        return ResponseEntity.notFound().build();
+//    }
 }
