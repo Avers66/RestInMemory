@@ -79,6 +79,7 @@ public class ClientRepositoryInMemory implements ClientRepository {
     public void deleteAll() {
         orderRepository.deleteAll();
         repository.clear();
+        currentId.set(0);
     }
 
     @Autowired

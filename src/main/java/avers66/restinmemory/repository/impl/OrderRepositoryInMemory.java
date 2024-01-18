@@ -76,6 +76,7 @@ public class OrderRepositoryInMemory implements OrderRepository {
     @Override
     public void deleteAll() {
         repository.clear();
+        currentId.set(0);
     }
 
     @Autowired
